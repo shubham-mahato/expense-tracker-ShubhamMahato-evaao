@@ -45,7 +45,7 @@ public class ExpenseService {
                 .orElseGet(() -> categoryRepository.save(expenseDetails.getCategory()));
 
         existingExpense.setAmount(expenseDetails.getAmount());
-        existingExpense.setData(expenseDetails.getData());
+        existingExpense.setDate(expenseDetails.getDate());
         existingExpense.setNote(expenseDetails.getNote());
         existingExpense.setCategory(category);
         return expenseRepository.save(existingExpense);

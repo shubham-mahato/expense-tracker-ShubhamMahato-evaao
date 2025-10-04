@@ -1,33 +1,29 @@
-HELP.md
+# Compiled output
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
-.apt_generated
+# Log files
+*.log
+
+# Maven Wrapper JAR (should be committed)
+# .mvn/wrapper/maven-wrapper.jar
+
+# IDE configuration files
+.idea/
+*.iml
+.vscode/
 .classpath
-.factorypath
 .project
 .settings
+.factorypath
+
+# STS/Eclipse
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/

@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -26,10 +27,10 @@ public class Expense {
     @Column(nullable = false)
     private BigDecimal amount;
 
-    @NotNull(message = "Data cannot be null")
+    @NotNull(message = "Date cannot be null")
     @Column(nullable = false)
-    @PastOrPresent(message = "Data cannot be in future")
-    private String data;
+    @PastOrPresent(message = "Date cannot be in future")
+    private LocalDate date;
 
     @Size(max=255 , message = "Note cannot be longer than 255 Characters" )
     private String note;
