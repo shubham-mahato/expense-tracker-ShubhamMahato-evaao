@@ -8,6 +8,7 @@ import com.shubham.intern.expense_tracker.repository.ExpenseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -56,5 +57,13 @@ public class ExpenseService {
             throw new ResourceNotFoundException("Expense not Found with id: "+ id);
         }
         expenseRepository.deleteById(id);
+    }
+
+    public List<Expense> getExpensesByCategory(String categoryName) {
+        return expenseRepository.findByCategory_Name(categoryName);
+    }
+
+    public List<Expense> getExpensesByDateRange(LocalDate startDate, LocalDate endDate) {
+        return expenseRepository.findByDateBetween(startDate, endDate);
     }
 }
