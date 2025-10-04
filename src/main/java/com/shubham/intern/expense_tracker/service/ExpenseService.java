@@ -22,7 +22,7 @@ public class ExpenseService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Expense> getAllExpense() {
+    public List<Expense> getAllExpenses() {
         return expenseRepository.findAll();
     }
 

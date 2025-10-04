@@ -4,10 +4,12 @@ package com.shubham.intern.expense_tracker.controller;
 import com.shubham.intern.expense_tracker.model.Expense;
 import com.shubham.intern.expense_tracker.service.ExpenseService;
 import jakarta.validation.Valid;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -47,5 +49,20 @@ public class ExpenseController {
     public ResponseEntity<Void> deleteExpenseById(@PathVariable Long id) {
         expenseService.deleteExpense(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/filter")
+    public List<Expense> getFilteredExpenses(
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate
+    ) {
+        if (category != null) {
+            return expenseService.getExpensesByCategory(category);
+        }
+        if (startDate != null && endDate != null) {
+            return expenseService.getExpensesByDateRange(startDate, endDate);
+        }
+        return expenseService.getAllExpenses();
     }
 }
