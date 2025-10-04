@@ -30,7 +30,7 @@ public class ExpenseController {
 
     @GetMapping
     public List<Expense> getAllExpenses() {
-        return expenseService.getAllExpense();
+        return expenseService.getAllExpenses();
     }
 
     @GetMapping("/{id}")
